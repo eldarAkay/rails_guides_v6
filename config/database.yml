@@ -5,13 +5,16 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['RAILS_GUIDES_USERNAME'] %>
+  password: <%= ENV['RAILS_GUIDES_PASSWORD'] %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: rails_guides_v6_db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
